@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RazorGenerator.Core.Test
+namespace Asp
 {
     using System;
     using System.Collections.Generic;
@@ -29,9 +29,9 @@ namespace RazorGenerator.Core.Test
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "v.v.v.v")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/SuffixTransformerTest.cshtml")]
-    public partial class SuffixTransformerTestView : System.Web.Mvc.WebViewPage<dynamic>
+    public partial class SuffixTransformerTest_cshtmlView : System.Web.Mvc.WebViewPage<dynamic>
     {
-        public SuffixTransformerTestView()
+        public SuffixTransformerTest_cshtmlView()
         {
         }
         public override void Execute()

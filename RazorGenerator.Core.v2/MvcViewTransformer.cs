@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
@@ -22,7 +23,7 @@ namespace RazorGenerator.Core
             "System.Web.Routing",
         };
 
-        private readonly RazorCodeTransformerBase[] _codeTransformers = new RazorCodeTransformerBase[] { 
+        private readonly List<RazorCodeTransformerBase> _codeTransformers = new List<RazorCodeTransformerBase> { 
             new DirectivesBasedTransformers(),
             new AddGeneratedClassAttribute(),
             new AddPageVirtualPathAttribute(),
@@ -44,8 +45,21 @@ namespace RazorGenerator.Core
             get { return _codeTransformers; }
         }
 
+        /// <summary>
+        /// Directive that determines if we'll generate CLS compliant class names.
+        /// By default class names are generated based on app relative path.
+        /// </summary>
+        public static readonly string GenerateCLSCompliantClassNames = "GenerateCLSCompliantClassNames";
+
         public override void Initialize(RazorHost razorHost, IDictionary<string, string> directives)
         {
+            if (!directives.ContainsKey(GenerateCLSCompliantClassNames))
+            {
+                // If the user did not explicitly ask to generate CLS compliant names, we'll change it back to 
+                // the default Mvc naming scheme.
+                _codeTransformers.Add(new GenerateMvcDefaultClassNames());
+            }
+
             base.Initialize(razorHost, directives);
 
             _isSpecialPage = IsSpecialPage(razorHost.FullPath);

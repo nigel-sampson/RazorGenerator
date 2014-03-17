@@ -91,6 +91,11 @@ namespace RazorGenerator.Core
             get { return _fullPath; }
         }
 
+        public IDictionary<string, string> Directives
+        {
+            get { return _directives; }
+        }
+
         public event EventHandler<GeneratorErrorEventArgs> Error;
 
         public event EventHandler<ProgressEventArgs> Progress;

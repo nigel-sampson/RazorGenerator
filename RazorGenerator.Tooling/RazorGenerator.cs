@@ -10,6 +10,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 ***************************************************************************/
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -99,6 +100,18 @@ namespace RazorGenerator
 
             //Return the combined byte array
             return preamble;
+        }
+
+        private string GetProjectNamespace()
+        {
+            try
+            {
+                var ns = GetProject().Properties.Item("DefaultNamespace");
+                return ns != null ? (string)ns.Value : null;
+            }
+            catch {
+                return null;
+            }
         }
     }
 }

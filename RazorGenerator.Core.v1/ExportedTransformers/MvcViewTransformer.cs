@@ -18,7 +18,7 @@ namespace RazorGenerator.Core
             "System.Web.Mvc.Ajax",
             "System.Web.Routing",
         };
-        private readonly RazorCodeTransformerBase[] _codeTransformers = new RazorCodeTransformerBase[] { 
+        private readonly List<RazorCodeTransformerBase> _codeTransformers = new List<RazorCodeTransformerBase> { 
             new DirectivesBasedTransformers(),
             new AddGeneratedClassAttribute(),
             new AddPageVirtualPathAttribute(),
@@ -28,6 +28,12 @@ namespace RazorGenerator.Core
             new MvcWebConfigTransformer(),
             new MakeTypePartial(),
         };
+
+        /// <summary>
+        /// Directive that determines if we'll generate CLS compliant class names.
+        /// By default class names are generated based on app relative path.
+        /// </summary>
+        public static readonly string GenerateCLSCompliantClassNames = "GenerateCLSCompliantClassNames";
 
         internal static IEnumerable<string> MvcNamespaces
         {
@@ -41,6 +47,13 @@ namespace RazorGenerator.Core
 
         public override void Initialize(RazorHost razorHost, IDictionary<string, string> directives)
         {
+            if (!directives.ContainsKey(GenerateCLSCompliantClassNames))
+            {
+                // If the user did not explicitly ask to generate CLS compliant names, we'll change it back to 
+                // the default Mvc naming scheme.
+                _codeTransformers.Add(new GenerateMvcDefaultClassNames());
+            }
+
             base.Initialize(razorHost, directives);
 
             razorHost.CodeGenerator = new MvcCodeGenerator(razorHost.DefaultClassName, razorHost.DefaultBaseClass, razorHost.DefaultNamespace, razorHost.FullPath, razorHost);

@@ -56,6 +56,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeTransformers\GenerateMvcDefaultClassNames.cs" />
     <Compile Include="CodeTransformers\ExcludeFromCodeCoverageTransformer.cs" />
     <Compile Include="CodeTransformers\MakeTypePartial.cs" />
     <Compile Include="CodeTransformers\SuffixFileNameTransformer.cs" />

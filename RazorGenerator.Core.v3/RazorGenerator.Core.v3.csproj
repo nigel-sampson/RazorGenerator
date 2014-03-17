@@ -101,6 +101,9 @@
     <Compile Include="..\RazorGenerator.Core.v1\CodeTransformers\ExcludeFromCodeCoverageTransformer.cs">
       <Link>CodeTransformers\ExcludeFromCodeCoverageTransformer.cs</Link>
     </Compile>
+    <Compile Include="..\RazorGenerator.Core.v1\CodeTransformers\GenerateMvcDefaultClassNames.cs">
+      <Link>CodeTransformers\GenerateMvcDefaultClassNames.cs</Link>
+    </Compile>    
     <Compile Include="..\RazorGenerator.Core.v1\ExportedTransformers\TemplateTransformer.cs" />
     <Compile Include="..\RazorGenerator.Core.v1\ExportedTransformers\WebPagesHelperTransformer.cs" />
     <Compile Include="..\RazorGenerator.Core.v1\ExportedTransformers\WebPagesTransformer.cs" />

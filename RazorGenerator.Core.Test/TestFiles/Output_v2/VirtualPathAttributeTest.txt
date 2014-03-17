@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RazorGenerator.Core.Test
+namespace Asp
 {
     using System;
     using System.Collections.Generic;
@@ -29,9 +29,9 @@ namespace RazorGenerator.Core.Test
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "v.v.v.v")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Account/Users.cshtml")]
-    public partial class VirtualPathAttributeTest : System.Web.Mvc.WebViewPage<dynamic>
+    public partial class VirtualPathAttributeTest_cshtml : System.Web.Mvc.WebViewPage<dynamic>
     {
-        public VirtualPathAttributeTest()
+        public VirtualPathAttributeTest_cshtml()
         {
         }
         public override void Execute()

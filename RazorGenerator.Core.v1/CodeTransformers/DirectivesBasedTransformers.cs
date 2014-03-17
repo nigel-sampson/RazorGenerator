@@ -12,6 +12,13 @@ namespace RazorGenerator.Core
         public static readonly string NamespaceKey = "Namespace";
         public static readonly string ExcludeFromCodeCoverage = "ExcludeFromCodeCoverage";
         public static readonly string SuffixFileName = "ClassSuffix";
+
+        /// <summary>
+        /// Determines if Razor generates "clean" class names. By default, class names are based off project root
+        /// relative path.
+        /// </summary>
+        public static readonly string GenerateCleanClassNames = "GenerateCleanClassNames";
+
         private readonly List<RazorCodeTransformerBase> _transformers = new List<RazorCodeTransformerBase>();
 
         protected override IEnumerable<RazorCodeTransformerBase> CodeTransformers
